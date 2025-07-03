@@ -1,17 +1,20 @@
-# Use an official lightweight OpenJDK image
-FROM eclipse-temurin:23-jdk
+# Stage 1: Build the JAR file
+FROM maven:3.9.5-eclipse-temurin-17 AS builder
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the built JAR file into the container
-COPY target/ecom-proj-0.0.1-SNAPSHOT.jar app.jar
+COPY pom.xml .
+COPY src ./src
 
-# Expose the port your Spring Boot app runs on
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the app
+FROM eclipse-temurin:17-jdk
+
+WORKDIR /app
+
+COPY --from=builder /app/target/*.jar app.jar
+
 EXPOSE 10000
 
-# Run the JAR file
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
-
-
