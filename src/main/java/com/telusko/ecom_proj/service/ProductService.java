@@ -21,7 +21,7 @@ public class ProductService {
 	private ProductRepo repo;
 
 	@Autowired
-	private Cloudinary cloudinary; // Ensure this bean is properly configured
+	private Cloudinary cloudinary; 
 
 	public List<Product> getAllProducts() {
 		return repo.findAll();
@@ -32,17 +32,15 @@ public class ProductService {
 	}
 
 	public Product addProduct(Product product, MultipartFile imageFile) throws IOException {
-	    // Ensure that an image file is provided when adding a new product
 	    if (imageFile == null || imageFile.isEmpty()) {
 	        throw new IllegalArgumentException("Image file is required for adding a new product.");
 	    }
 
-	    // Perform Cloudinary upload
 	    Map<?, ?> uploadResult = cloudinary.uploader().upload(imageFile.getBytes(), ObjectUtils.emptyMap());
 	    String imageUrl = (String) uploadResult.get("secure_url");
-	    product.setImageUrl(imageUrl); // Set the URL from Cloudinary
+	    product.setImageUrl(imageUrl);
 
-	    return repo.save(product); // Save the product with the new image URL
+	    return repo.save(product); 
 	}
 
 	public Product updateProduct(int id, Product updatedProductDetails, MultipartFile imageFile) throws IOException {

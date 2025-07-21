@@ -1,4 +1,4 @@
-package com.telusko.ecom_proj.DbDebugController; // 🔁 change this to your actual package
+package com.telusko.ecom_proj.DbDebugController; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +18,9 @@ public class DbDebugController {
     @GetMapping("/db")
     public String showDbUrl() {
         try (Connection conn = dataSource.getConnection()) {
-            return "✅ Connected to: " + conn.getMetaData().getURL();
+            return " Connected to: " + conn.getMetaData().getURL();
         } catch (Exception e) {
-            return "❌ Error: " + e.getMessage();
+            return " Error: " + e.getMessage();
         }
     }
     

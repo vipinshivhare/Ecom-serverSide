@@ -47,10 +47,6 @@ public class ProductController {
 	public ResponseEntity<?> addProduct(@RequestPart("product") Product product,
 	                                    @RequestPart("imageFile") MultipartFile imageFile) {
 	    try {
-	    	 System.out.println("Available: " + product.isAvailable());
-	         System.out.println("Quantity: " + product.getQuantity());
-	         System.out.println("Release Date: " + product.getReleaseDate());
-	         
 	        Product product1 = service.addProduct(product, imageFile);
 	        return new ResponseEntity<>(product1, HttpStatus.CREATED);
 	    } catch (Exception e) {
@@ -68,12 +64,10 @@ public class ProductController {
 	        if (updatedProduct != null) {
 	            return new ResponseEntity<>("Product updated successfully", HttpStatus.OK);
 	        } else {
-	            // This case might mean product with ID was not found in service layer
 	            return new ResponseEntity<>("Product not found or failed to update", HttpStatus.NOT_FOUND);
 	        }
-	    } catch (Exception e) { // Catch more general exceptions for robustness
-	        // Log the exception for debugging purposes
-	        e.printStackTrace(); // Consider using a logger like SLF4J/Logback in production
+	    } catch (Exception e) { 
+	        e.printStackTrace();
 	        return new ResponseEntity<>("Error updating product: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	}
