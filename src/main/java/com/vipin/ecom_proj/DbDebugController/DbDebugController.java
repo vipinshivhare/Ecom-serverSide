@@ -1,4 +1,4 @@
-package com.telusko.ecom_proj.DbDebugController; 
+package com.vipin.ecom_proj.DbDebugController; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

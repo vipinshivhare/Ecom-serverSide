@@ -1,4 +1,4 @@
-package com.telusko.ecom_proj.controller;
+package com.vipin.ecom_proj.controller;
 
 import java.io.IOException;
 import java.util.*;
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.telusko.ecom_proj.model.Product;
-import com.telusko.ecom_proj.service.ProductService;
+import com.vipin.ecom_proj.model.Product;
+import com.vipin.ecom_proj.service.ProductService;
 
 @RestController
 @CrossOrigin 

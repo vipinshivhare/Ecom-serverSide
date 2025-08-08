@@ -1,4 +1,4 @@
-package com.telusko.ecom_proj.model;
+package com.vipin.ecom_proj.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
