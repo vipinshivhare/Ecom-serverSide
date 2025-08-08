@@ -36,6 +36,5 @@ public class Product {
     private boolean available;
     private int quantity;
 
-    @Column(length = 1000)
     private String imageUrl;
 }
